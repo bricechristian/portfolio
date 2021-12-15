@@ -1,0 +1,23 @@
+@font-face {
+  font-family: "MBKaos";
+  font-weight: normal;
+  font-style: normal;
+  src: url("/mbkaos-webfont.woff2") format("woff2"),
+       url("/mbkaos-webfont.woff") format("woff");
+}
+
+@font-face {
+    font-family: "TSBlock";
+    font-weight: normal;
+    font-style: normal;
+    src: url("/tsblock-webfont.woff2") format("woff2"),
+         url("/tsblock-webfont.woff") format("woff");
+  }
+
+@font-face { 
+    font-family: "NewYork";
+    font-weight: normal;
+    font-style: normal;
+    src: url("/newyork-webfont.woff2") format("woff2"),
+         url("/newyork-webfont.woff") format("woff");
+}  
