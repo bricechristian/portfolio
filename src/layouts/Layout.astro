@@ -1,0 +1,41 @@
+---
+// https://docs.astro.build/en/guides/view-transitions/
+import { ViewTransitions } from 'astro:transitions';
+
+import { SEO } from "astro-seo";
+
+import "../styles/theme.scss";
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <SEO title="Brice Christian | Videography Portfolio" />
+    <ViewTransitions />
+  </head> 
+  <body class="overflow-hidden">
+    <video 
+      preload="true" 
+      playsinline="" 
+      autoplay="" 
+      muted="" 
+      loop
+      style="width:100%"
+      class="absolute inset-0 h-full w-full object-cover mix-blend-difference opacity-60"
+    >
+      <source src="/film-bg-2.mp4" type="video/mp4">
+    </video>
+      <main class="flex items-center justify-center md:px-6">
+        <Header />
+        <slot />
+        <Footer />
+      </main>
+      <script src="../scripts/theme.js"></script>
+    </div>
+  </body>
+</html>

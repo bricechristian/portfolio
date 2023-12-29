@@ -1,0 +1,143 @@
+---
+import Layout from "../layouts/Layout.astro";
+// import { getPosts } from "../utils/sanity";
+
+// const posts = await getPosts();
+---
+
+<style>
+  #title-underline {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+  }
+  #title-underline.in-view {
+    animation: drawLine 1.25s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation-delay: .4s;
+  }
+  #video {
+    -webkit-mask-image:url(/film-frame.png);
+    -webkit-mask-position:left top;
+    -webkit-mask-repeat:no-repeat;
+    -webkit-mask-size:100% 100%;
+  
+    mask-image:url(/film-frame.png);
+    mask-position:left top;
+    mask-repeat:no-repeat;
+    mask-size:100% 100%;
+  }
+  @keyframes drawLine {
+      to {
+        clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
+      }
+    }
+    @media (orientation: landscape) and (max-height: 680px){
+      .video-wrap {
+        padding: 12px;
+        min-width: 40vw;
+      }
+      .video-wrap h3 {
+        font-size: clamp(90px,11vw,240px);
+      }
+      #tape-headline {
+        display: none;
+      }
+    }
+</style>
+
+<Layout>
+  <svg id="video-close-trigger" class="w-6 h-6 absolute top-6 right-6 invisible transition-smooth cursor-pointer supports-hover:hover:opacity-40" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 0 25 25"><g stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="m3 21.32 18-18M3 3.32l18 18"/></g></svg>
+  <section class="relative sm:w-full md:w-[90vw] md:py-6">
+    <div
+      class="video-wrap flex items-center border-2 border-transprent p-[clamp(12px,11vmin,64px)]  max-h-[90vh] relative overflow-hidden sm:p-4 sm:py-6 md:p-8 md_min:aspect-[16/12]"
+    >
+      <div class="container md:px-0">
+        <div class="video-dim relative z-10 left-4 md_min:top-[clamp(5px,2.5vw,12px)]">
+          <p class="caps-12" data-viewport="typography-shift">
+            <span>{new Date().getFullYear()}</span>
+          </p>
+          <h2
+            class="caps-14"
+            data-viewport="typography-shift"
+            data-viewport-delay=".25"
+          >
+            <span>Brice Christian</span>
+          </h2>
+        </div>
+        <h3
+          class="video-dim font-heading text-[clamp(90px,18vmin,240px)] leading-none relative z-10 md:text-[clamp(90px,25vmin,240px)] sm:text-[clamp(70px,24vw,240px)]"
+        >
+          <span data-viewport="typography-shift" data-viewport-delay=".4">
+            <span class="inline-flex -rotate-[5deg]">Portfolio</span>
+          </span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            id="title-underline"
+            class="-scale-y-100 -rotate-[5deg] -translate-y-3"
+            data-viewport
+            viewBox="0 0 1576 141"
+            ><path
+              d="M153.58 20.56c54.61 7.77 11.57 2.06 114.89 15.59 13.33 1.74 90.26 10.48 91.36 10.58 134.57 12.96 190.69 18.5 388.54 25.15 129.22 1.29 93.08 1.1 154.55.57 81.39-.71 59.62-.04 125.55-4.57 63.95-4.4 45.79-3.03 63.95-4.82 122.74-12.1 74.45-6.7 196.81-22.16.11-.01 87.68-12.88 144.71-23.82l59.43-11.39c1.85-.35 3.34 1.62 4.26 2.89 5.62 7.81 7.57 23.36 5.18 27.51 24.07-1.73 36.84-3.04 53.78-2.26 2.94.14 5.88.72 8.79 1.14 7.63 2.7 13.25 29.31 8.37 33.57a11.5 11.5 0 0 1-6.34 3.04 61.01 61.01 0 0 1-21.5 10.23c-4.78 1.12-7.26 1.09-26.8 2.32-26.15 1.64-20.08 2.59-70.36 10.41-124.17 19.35-260.96 36.26-386.48 42.12-203.77 9.49-418.63-.99-621.76-19.77C188.84 102.05 36.15 75.18 30.07 74.7a10.51 10.51 0 0 1-4.75-1.64c-1.91-1.23-3.06-3.52-4.14-5.42-5.56-9.8-6.47-22.79-4.73-27.16-2.45-1.29-4.88-2.65-7.33-3.91C4.2 34.06-2.72 12.7 1.11 4.47c.85-1.32 1.61-2.4 2.71-3.52C4.57.19 5.83 0 6.95 0c7.42 0 128.62 17.94 146.63 20.56Z"
+              fill="currentColor"></path></svg
+          >
+        </h3>
+        <div class="video-dim flex justify-end pr-6 md_min:-mt-4" data-viewport="fade-in" data-viewport-delay=".5">
+          <a href="#" id="video-trigger" class="button-arrow relative z-10">Dim the Lights</a>
+        </div>
+        <div data-viewport="fade-in" data-viewport-delay=".55">
+          <video
+            preload="true"
+            playsinline=""
+            autoplay=""
+            muted=""
+            loop
+            style="width:100%"
+            id="video"
+            class="absolute top-0 left-0 h-full w-full object-cover opacity-40 transition-smooth"
+          >
+            <source src="/sample.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+    </div>
+    <div
+      id="tape-headline"
+      class="video-dim absolute top-[clamp(-180px,-17vw,-20px)] -right-20 h-[100px] w-[clamp(140px,40vw,510px)] md:hidden"
+    >
+    <div data-viewport="fade-in" data-viewport-delay=".75">
+      <img
+        src="/tape.png"
+        loading="eager"
+        width="600"
+        height="80"
+        class="w-full max-w-[clamp(140px,40vw,510px)]"
+      />
+      <h2
+        class="font-heading text-black text-[clamp(30px,5.5vw,70px)] leading-none absolute rotate-[21deg] top-[clamp(20px,16.5vw,218px)] right-[clamp(40px,7vw,92px)] z-10 mix-blend-hard-light"
+      >
+        Videography
+      </h2>
+    </div>
+    </div>
+  </section>
+</Layout>
+
+<script defer>
+  let $videoDimTrigger = document.getElementById("video-trigger");
+  let $videoDimCloseTrigger = document.getElementById("video-close-trigger");
+  let $video = document.getElementById("video");
+  $videoDimTrigger.onclick = (e) => {
+    e.preventDefault();
+    document.querySelectorAll(".video-dim").forEach($el => {
+      $el.classList.add("video-dim--dimmed")
+      $videoDimCloseTrigger.classList.remove("invisible");
+      $video.classList.remove("opacity-40");
+    })
+  }
+  $videoDimCloseTrigger.onclick = (e) => {
+    e.preventDefault();
+    document.querySelectorAll(".video-dim").forEach($el => {
+      $el.classList.remove("video-dim--dimmed")
+      $videoDimCloseTrigger.classList.add("invisible");
+      $video.classList.add("opacity-40");
+    })
+  }
+</script>
