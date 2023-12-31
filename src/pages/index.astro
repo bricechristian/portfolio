@@ -11,7 +11,7 @@ import Layout from "../layouts/Layout.astro";
   }
   #title-underline.in-view {
     animation: drawLine 1.25s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-    animation-delay: .4s;
+    animation-delay: .6s;
   }
   #video {
     -webkit-mask-image:url(/film-frame.png);
@@ -47,7 +47,7 @@ import Layout from "../layouts/Layout.astro";
   <svg id="video-close-trigger" class="w-6 h-6 absolute top-6 right-6 invisible transition-smooth cursor-pointer supports-hover:hover:opacity-40" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 0 25 25"><g stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="m3 21.32 18-18M3 3.32l18 18"/></g></svg>
   <section class="relative sm:w-full md:w-[90vw] md:py-6">
     <div
-      class="video-wrap flex items-center border-2 border-transprent p-[clamp(12px,11vmin,64px)]  max-h-[90vh] relative overflow-hidden sm:p-4 sm:py-6 md:p-8 md_min:aspect-[16/12]"
+      class="video-wrap flex items-center border-2 border-transprent p-[clamp(12px,11vmin,64px)]  max-h-[90vh] relative overflow-hidden sm:p-4 sm:py-6 md:p-8 md_min:min-w-[clamp(600px,60vw,900px)] md_min:aspect-[16/12]"
     >
       <div class="container md:px-0">
         <div class="video-dim relative z-10 left-4 md_min:top-[clamp(5px,2.5vw,12px)]">
@@ -63,7 +63,7 @@ import Layout from "../layouts/Layout.astro";
           </h2>
         </div>
         <h3
-          class="video-dim font-heading text-[clamp(90px,18vmin,240px)] leading-none relative z-10 md:text-[clamp(90px,25vmin,240px)] sm:text-[clamp(70px,24vw,240px)]"
+          class="video-dim font-heading text-[clamp(90px,14vw,230px)] leading-none relative z-10 md:text-[clamp(90px,25vmin,240px)] sm:text-[clamp(70px,24vw,240px)]"
         >
           <span data-viewport="typography-shift" data-viewport-delay=".4">
             <span class="inline-flex -rotate-[5deg]">Portfolio</span>
