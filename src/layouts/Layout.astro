@@ -28,6 +28,18 @@ const { title } = Astro.props;
 		<link rel="icon" href="/favicon.ico" sizes="any">
 		<link rel="manifest" href="/manifest.webmanifest">    
     <meta name="viewport" content="width=device-width" />
+
+		<!-- Google tag (gtag.js) -->
+		<script type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-KB2VP886CH"></script>
+		<script type="text/partytown">
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-KB2VP886CH');
+		</script>
+
+
   </head> 
   <body class="overflow-hidden">
     <video 
