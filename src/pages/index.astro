@@ -1,8 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-// import { getPosts } from "../utils/sanity";
-
-// const posts = await getPosts();
 ---
 
 <style>
@@ -41,10 +38,21 @@ import Layout from "../layouts/Layout.astro";
         display: none;
       }
     }
+    @media (orientation: landscape) and (max-height: 450px){
+      .video-wrap {
+        min-width: 55vw;
+      }
+    }
 </style>
 
 <Layout>
-  <svg id="video-close-trigger" class="w-6 h-6 absolute top-6 right-6 invisible transition-smooth cursor-pointer supports-hover:hover:opacity-40" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 0 25 25"><g stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="m3 21.32 18-18M3 3.32l18 18"/></g></svg>
+  <div id="video-controls" class="invisible transition-smooth">
+    <svg id="video-close-trigger" class="w-6 h-6 absolute top-6 right-6 transition-smooth cursor-pointer supports-hover:hover:opacity-40" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 0 25 25"><g stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="m3 21.32 18-18M3 3.32l18 18"/></g></svg>
+    <div id="video-audio" class="absolute top-6 right-[66px]">
+      <svg id="video-unmute" class="absolute top-0 -left-6 w-6 h-6 transition-smooth cursor-pointer supports-hover:hover:opacity-40" fill="#ffffff" viewBox="0 0 1920 1920" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M1129.432 113v1694.148H936.638l-451.773-451.773h-315.45C76.01 1355.375 0 1279.365 0 1185.96V734.187c0-93.404 76.01-169.414 169.415-169.414h315.45L936.638 113h192.794Zm-112.943 112.943h-33.093l-418.68 418.68v630.901l418.68 418.68h33.093V225.944Zm655.488 135.114C1831.904 521.097 1920 733.77 1920 960.107c0 226.226-88.096 438.898-248.023 598.938l-79.851-79.85c138.694-138.695 214.93-323.018 214.93-519.087 0-196.183-76.236-380.506-214.93-519.2Zm-239.112 239.745c95.663 97.018 148.294 224.644 148.294 359.272s-52.631 262.254-148.294 359.272l-80.529-79.286c74.769-75.785 115.88-175.175 115.88-279.986 0-104.811-41.111-204.201-115.88-279.986Zm-981.092 76.914H169.415c-31.06 0-56.472 25.3-56.472 56.471v451.773c0 31.172 25.412 56.472 56.472 56.472h282.358V677.716Z" fill-rule="evenodd"></path> </g></svg>  
+      <svg id="video-mute" class="absolute top-0 -left-6 w-6 h-6 transition-smooth cursor-pointer supports-hover:hover:opacity-40 invisible" fill="#ffffff" viewBox="0 0 1920 1920" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M1129.432 113v1694.148H936.638l-451.773-451.773h-315.45c-92.47 0-167.893-74.498-169.392-166.618L0 1185.96V734.187c0-92.47 74.498-167.892 166.618-169.392l2.797-.022h315.45L936.638 113h192.794Zm-112.943 112.943h-33.093l-418.68 418.68v630.901l418.68 418.68h33.093V225.944Zm823.662 411.78L1920 717.571l-242.372 242.372L1920 1202.428l-79.85 79.85-242.484-242.372-242.372 242.372-79.85-79.85 242.372-242.484-242.371-242.372 79.85-79.85 242.37 242.372 242.486-242.372ZM451.773 677.715H169.415c-30.749 0-55.963 24.796-56.464 55.538l-.008.933v451.773c0 30.86 24.907 55.965 55.542 56.464l.93.008h282.358V677.716Z" fill-rule="evenodd"></path> </g></svg>    
+    </div>
+  </div>
   <section class="relative sm:w-full md:w-[90vw] md:py-6">
     <div
       class="video-wrap flex items-center border-2 border-transprent p-[clamp(12px,11vmin,64px)]  max-h-[90vh] relative overflow-hidden sm:p-4 sm:py-6 md:p-8 md_min:min-w-[clamp(600px,60vw,900px)] md_min:aspect-[16/12]"
@@ -83,7 +91,7 @@ import Layout from "../layouts/Layout.astro";
           <a href="#" id="video-trigger" class="button-arrow relative z-10">Dim the Lights</a>
         </div>
         <div data-viewport="fade-in" data-viewport-delay=".55">
-          <video
+          <!-- <video
             preload="true"
             playsinline=""
             autoplay=""
@@ -94,7 +102,17 @@ import Layout from "../layouts/Layout.astro";
             class="absolute top-0 left-0 h-full w-full object-cover opacity-40 transition-smooth"
           >
             <source src="/sample.mp4" type="video/mp4" />
-          </video>
+          </video> -->
+          <script src="https://cdn.jsdelivr.net/npm/@mux/mux-video@0" defer></script>
+          <mux-video
+            playback-id="bFdNhXh2eN6hgOttbVCMjEeNmVVK3VkPoDOzcywtoLU"
+            stream-type="on-demand"
+            loop
+            muted
+            autoplay
+            id="video"
+            class="absolute top-0 left-0 h-full w-full object-cover opacity-40 transition-smooth"
+          ></mux-video>    
         </div>
       </div>
     </div>
@@ -124,20 +142,54 @@ import Layout from "../layouts/Layout.astro";
   let $videoDimTrigger = document.getElementById("video-trigger");
   let $videoDimCloseTrigger = document.getElementById("video-close-trigger");
   let $video = document.getElementById("video");
+  let $videoControls = document.getElementById("video-controls");
+  let $videoMute = document.getElementById("video-mute");
+  let $videoUnmute = document.getElementById("video-unmute");
   $videoDimTrigger.onclick = (e) => {
     e.preventDefault();
+    $videoControls.classList.remove("invisible");
     document.querySelectorAll(".video-dim").forEach($el => {
       $el.classList.add("video-dim--dimmed")
-      $videoDimCloseTrigger.classList.remove("invisible");
-      $video.classList.remove("opacity-40");
     })
+    $video.classList.remove("opacity-40");
+    $video.muted = false;
+    $videoMute.classList.add("invisible");
+    $videoUnmute.classList.remove("invisible");
   }
   $videoDimCloseTrigger.onclick = (e) => {
     e.preventDefault();
+    $videoControls.classList.add("invisible");
     document.querySelectorAll(".video-dim").forEach($el => {
       $el.classList.remove("video-dim--dimmed")
-      $videoDimCloseTrigger.classList.add("invisible");
-      $video.classList.add("opacity-40");
     })
+    $video.classList.add("opacity-40");
+    $video.muted = true;
+    $videoMute.classList.remove("invisible");
+    $videoUnmute.classList.add("invisible");
   }
+  document.onkeydown = function(evt) {
+    evt = evt || window.event;
+    if (evt.keyCode == 27) {
+      $videoControls.classList.add("invisible");
+      document.querySelectorAll(".video-dim").forEach($el => {
+        $el.classList.remove("video-dim--dimmed")
+      })
+      $video.classList.add("opacity-40");
+      $video.muted = true;
+      $videoMute.classList.remove("invisible");
+      $videoUnmute.classList.add("invisible");
+    }
+  };   
+  $videoMute.onclick = (e) => {
+    e.preventDefault();
+    $video.muted = false;
+    $videoMute.classList.add("invisible");
+    $videoUnmute.classList.remove("invisible");
+  }
+  $videoUnmute.onclick = (e) => {
+    e.preventDefault();
+    $video.muted = true;
+    $videoMute.classList.remove("invisible");
+    $videoUnmute.classList.add("invisible");
+  } 
 </script>

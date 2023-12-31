@@ -61,6 +61,10 @@
     .transition-smooth {
         transition: .3s
     }
+    .invisible {
+        opacity: 0;
+        visibility: hidden;
+    }
 	.container-base {
 		@apply 
             w-full
